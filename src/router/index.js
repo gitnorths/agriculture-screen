@@ -25,6 +25,11 @@ const routes = [
         name: 'implement',
         component: () => import('../views/Implement.vue'),
       },
+      {
+        path: '/main/innovation',
+        name: 'innovation',
+        component: () => import('../views/Innovation.vue'),
+      },
     ],
   },
 
