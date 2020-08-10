@@ -93,6 +93,9 @@
             胜利村
           </div>
         </div>
+        <div class="charts">
+          <v-chart :options="mapOption" />
+        </div>
       </div>
       <div class="reducepollu">
         养殖业污染减排
@@ -126,6 +129,102 @@ export default {
     return {
       chemistry: 'organic',
       village: 'donglin',
+      mapOption: {
+        color: ['#38B8C5', '#3F75FF', '#769BFE'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow',
+          },
+        },
+        legend: {
+          show: true,
+          data: ['220KV', '110KV', '15KV'],
+          right: 10,
+          textStyle: {
+            color: '#fff',
+          },
+          itemWidth: 10,
+          itemHeight: 10,
+          itemGap: 35,
+        },
+        grid: {
+          top: '10%',
+          left: '3%',
+          right: '3%',
+          bottom: '5%',
+          containLabel: true,
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: ['武汉市', '黄石市', '十堰市', '宜昌市', '襄阳市', '鄂州市'],
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#134C9E',
+                width: 1,
+                type: 'solid',
+              },
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              show: true,
+              textStyle: {
+                color: '#FFF',
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            axisLabel: {
+              formatter: '{value} ',
+              color: '#FFF',
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#134C9E',
+                width: 1,
+                type: 'solid',
+              },
+            },
+            splitLine: {
+              show: false,
+            },
+          },
+        ],
+        series: [
+          {
+            name: '220KV',
+            type: 'bar',
+            data: [20, 50, 80, 58, 83, 68],
+            barWidth: 10, //柱子宽度
+            barGap: 0.3, //柱子之间间距
+          },
+          {
+            name: '110KV',
+            type: 'bar',
+            data: [50, 70, 60, 61, 75, 87],
+            barWidth: 10,
+            barGap: 0.3,
+          },
+          {
+            name: '15KV',
+            type: 'bar',
+            data: [70, 48, 73, 68, 53, 47],
+            barWidth: 10,
+            barGap: 0.3,
+          },
+        ],
+      },
     }
   },
   methods: {
@@ -225,6 +324,7 @@ export default {
         padding: 10px 50px;
         height: 45px;
         .btndefault(@color:#66cfd4, @background-color: #042233) {
+          cursor: pointer;
           width: 50px;
           height: 25px;
           background-color: @background-color;
@@ -241,7 +341,16 @@ export default {
           .btndefault(@color:#153444, @background-color:#7EFAFC);
         }
       }
+
+      .charts {
+        width: 100%;
+        height: calc(100% - 224px);
+      }
     }
   }
+}
+.echarts {
+  width: 100%;
+  height: 100%;
 }
 </style>
