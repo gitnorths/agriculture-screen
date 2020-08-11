@@ -10,7 +10,7 @@ npm install -g @vue/cli
 yarn global add @vue/cli
 ```
 
-## 项目建立
+## 3、项目安装
 
 ```
 npm install
@@ -18,7 +18,7 @@ npm install
 yarn install
 ```
 
-### 开发环境编译和热更新
+### 4、本地开发（开发环境）
 
 ```
 npm run serve
@@ -26,7 +26,7 @@ npm run serve
 yarn run serve
 ```
 
-### 生产环境编译和压缩
+### 5、打包生成产品（生产环境）
 
 ```
 npm run build
