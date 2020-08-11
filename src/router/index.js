@@ -34,9 +34,27 @@ const routes = [
   },
 
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue'),
+    path: '/pollutionpre',
+    name: 'pollutionpre',
+    redirect: '/pollutionpre/fertilizerre',
+    component: () => import('../views/pollutionPrevent/PollutionIndex.vue'),
+    children: [
+      {
+        path: '/pollutionpre/fertilizerre',
+        name: 'fertilizerre',
+        redirect: '/pollutionpre/fertilizerre/fertilizepro',
+        component: () =>
+          import('../views/pollutionPrevent/FertilizerReduce.vue'),
+        children: [
+          {
+            path: '/pollutionpre/fertilizerre/fertilizepro',
+            name: 'fertilizepro',
+            component: () =>
+              import('../views/pollutionPrevent/fertilizerre/FertilizePro.vue'),
+          },
+        ],
+      },
+    ],
   },
 ]
 

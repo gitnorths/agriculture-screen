@@ -125,7 +125,7 @@
         </div>
         <div class="farmlandpollu-body">
           <div class="bigtree"></div>
-          <div class="fertilizer">
+          <div class="fertilizer" @click="gotoDetail('fertilizerre')">
             <div class="fertilizer-img"></div>
             <span>化肥减施工程</span>
           </div>
@@ -394,6 +394,9 @@ export default {
     checkWaterqua(tag) {
       this.waterqua = tag
     },
+    gotoDetail(page) {
+      this.$router.push(`/pollutionpre/${page}`)
+    },
   },
 }
 </script>
@@ -441,9 +444,9 @@ export default {
         display: flex;
         justify-content: space-around;
         border-bottom: 2px dashed #35727d;
-        box-shadow: 0px 1px 0px 0px transparent inset,
-          -10px 0px 0px 0px transparent, 10px 0px 0px 0px transparent,
-          0px -1px 2px 0px #35727d inset;
+        // box-shadow: 0px 1px 0px 0px transparent inset,
+        //   -10px 0px 0px 0px transparent, 10px 0px 0px 0px transparent,
+        //   0px -1px 2px 0px #35727d inset;
 
         .chemistrypub(@background-image: url('../assets/homePage/implement/chemistry-bg.png'),@color: #7efafc) {
           cursor: pointer;
@@ -634,6 +637,7 @@ export default {
           flex-flow: column;
           justify-content: center;
           align-items: center;
+          cursor: pointer;
           &-img {
             background-image: @background-image;
             background-repeat: no-repeat;
