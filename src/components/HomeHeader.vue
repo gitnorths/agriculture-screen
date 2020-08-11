@@ -45,7 +45,7 @@ export default {
   name: 'HomeHeader',
   data() {
     return {
-      tags: 'home',
+      tags: 'implement',
     }
   },
   methods: {

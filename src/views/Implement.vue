@@ -124,35 +124,25 @@
           农田面源污染防治
         </div>
         <div class="farmlandpollu-body">
-          <img
-            class="bigtree"
-            src="../assets/homePage/implement/slices/bigtree.png"
-            alt=""
-          />
+          <div class="bigtree"></div>
           <div class="fertilizer">
-            <img
-              src="../assets/homePage/implement/slices/fertilizer.png"
-              alt=""
-            />
+            <div class="fertilizer-img"></div>
             <span>化肥减施工程</span>
           </div>
           <div class="saving">
-            <img src="../assets/homePage/implement/slices/saving.png" alt="" />
+            <div class="saving-img"></div>
             <span>农田节水工程</span>
           </div>
           <div class="pesticide">
-            <img
-              src="../assets/homePage/implement/slices/pesticide.png"
-              alt=""
-            />
+            <div class="pesticide-img"></div>
             <span>农田减药工程</span>
           </div>
           <div class="waste">
-            <img src="../assets/homePage/implement/slices/waste.png" alt="" />
+            <div class="waste-img"></div>
             <span>农业废弃物利用工程</span>
           </div>
           <div class="purify">
-            <img src="../assets/homePage/implement/slices/purify.png" alt="" />
+            <div class="purify-img"></div>
             <span>农田排水氮磷拦截净化工程</span>
           </div>
         </div>
@@ -414,7 +404,6 @@ export default {
   height: 100%;
   box-sizing: border-box;
   padding: 28px 20px 25px 20px;
-
   display: flex;
 
   .titlepub(@font-size:18px) {
@@ -430,6 +419,9 @@ export default {
   &-left {
     width: 550px;
     height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 
     .env {
       width: 550px;
@@ -524,9 +516,9 @@ export default {
     }
 
     .reducepollu {
-      margin-top: 30px;
       width: 550px;
-      height: 448px;
+      // height: 448px;
+      height: calc(100% - 478px);
       background-image: url('../assets/homePage/implement/frame.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -598,10 +590,14 @@ export default {
     margin-left: 30px;
     width: 730px;
     height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 
     .farmlandpollu {
       width: 100%;
-      height: 610px;
+      // height: 610px;
+      height: calc(100% - 330px);
       background-image: url('../assets/homePage/implement/slices/frame2.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -619,11 +615,16 @@ export default {
 
         .bigtree {
           position: absolute;
+          background-image: url('../assets/homePage/implement/slices/bigtree.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          width: 475px;
+          height: 529px;
           left: 123px;
           top: -20px;
         }
 
-        .project(@top:120px,@left:74px) {
+        .project(@top:120px,@left:74px, @background-image: url('../assets/homePage/implement/slices/fertilizer.png')) {
           position: absolute;
           top: @top;
           left: @left;
@@ -633,30 +634,60 @@ export default {
           flex-flow: column;
           justify-content: center;
           align-items: center;
+          &-img {
+            background-image: @background-image;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 112px;
+            height: 112px;
+          }
+          &-img:hover {
+            transform: scale(1.1);
+          }
         }
         .fertilizer {
           .project();
         }
         .saving {
-          .project(@top:16px, @left:497px);
+          .project(
+            @top:10px,
+            @left:497px,
+            @background-image:
+              url('../assets/homePage/implement/slices/saving.png')
+          );
         }
 
         .pesticide {
-          .project(@top:354px, @left:110px);
+          .project(
+            @top:344px,
+            @left:110px,
+            @background-image:
+              url('../assets/homePage/implement/slices/pesticide.png')
+          );
         }
         .waste {
-          .project(@top:217px, @left:530px);
+          .project(
+            @top:200px,
+            @left:520px,
+            @background-image:
+              url('../assets/homePage/implement/slices/waste.png')
+          );
         }
         .purify {
-          .project(@top:380px, @left:430px);
+          .project(
+            @top:344px,
+            @left:430px,
+            @background-image:
+              url('../assets/homePage/implement/slices/purify.png')
+          );
         }
       }
     }
 
     &-bot {
-      margin-top: 14px;
       width: 100%;
-      height: calc(100% - 610px);
+      // height: calc(100% - 610px);
+      height: 315px;
       display: flex;
       .titles() {
         color: #7efafc;
@@ -802,6 +833,10 @@ export default {
     margin-left: 30px;
     width: 550px;
     height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
     .waterqua {
       width: 100%;
       height: 449px;
@@ -862,9 +897,9 @@ export default {
       }
     }
     .sewage {
-      margin-top: 40px;
       width: 100%;
-      height: 448px;
+      // height: 448px;
+      height: calc(100% - 469px);
       background-image: url('../assets/homePage/implement/frame.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
