@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import './plugin/echarts'
 import 'amfe-flexible'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+
+Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false
 

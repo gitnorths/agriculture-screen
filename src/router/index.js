@@ -52,6 +52,20 @@ const routes = [
             component: () =>
               import('../views/pollutionPrevent/fertilizerre/FertilizePro.vue'),
           },
+          {
+            path: '/pollutionpre/fertilizerre/returnfield',
+            name: 'returnfield',
+            component: () =>
+              import('../views/pollutionPrevent/fertilizerre/ReturnField.vue'),
+          },
+          {
+            path: '/pollutionpre/fertilizerre/phoreduce',
+            name: 'phoreduce',
+            component: () =>
+              import(
+                '../views/pollutionPrevent/fertilizerre/FertilizerReduce.vue'
+              ),
+          },
         ],
       },
     ],

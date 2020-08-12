@@ -49,6 +49,7 @@ export default {
   methods: {
     checkPro(project) {
       this.projectName = project
+      this.$router.push(`/pollutionpre/fertilizerre/${project}`)
     },
   },
 }
@@ -96,6 +97,11 @@ export default {
       opacity: 1;
       font-size: 24px;
     }
+  }
+
+  &-body {
+    width: 100%;
+    height: calc(100% - 126px);
   }
 }
 </style>

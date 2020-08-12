@@ -3,7 +3,9 @@
     <div class="fertilizepro-top">
       <div class="charts">
         <div class="charts-header">
-          有机无机配施工程
+          <img src="../../../assets/pollutionPrevent/dot1.png" alt="" />
+          <span>有机无机配施工程</span>
+          <img src="../../../assets/pollutionPrevent/dot2.png" alt="" />
         </div>
         <div class="charts-body">
           <div class="chart-top">
@@ -14,10 +16,32 @@
           </div>
         </div>
       </div>
-      <div class="swiper"></div>
+      <div class="swipercom">
+        <swiper :options="swiperOption">
+          <swiper-slide
+            class="swiper-slide"
+            v-for="(item, index) in carouselArr"
+            :key="index"
+          >
+            <div class="img-border">
+              <img :src="item.img" width="100%" />
+            </div>
+            <div class="img-name">
+              {{ item.name }}
+            </div>
+          </swiper-slide>
+          <!-- 分页器 -->
+          <div class="swiper-pagination" slot="pagination"></div>
+          <!-- 左右箭头 -->
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
+      </div>
       <div class="barchart">
         <div class="barchart-header">
-          项目实施效果
+          <img src="../../../assets/pollutionPrevent/dot1.png" alt="" />
+          <span>项目实施效果</span>
+          <img src="../../../assets/pollutionPrevent/dot2.png" alt="" />
         </div>
         <div class="barchart-body">
           <v-chart :options="barOption"></v-chart>
@@ -25,7 +49,56 @@
       </div>
     </div>
     <div class="fertilizepro-bot">
-      222
+      <div class="round1">
+        <div class="arrowdown"></div>
+        <div class="value">
+          28.1%
+        </div>
+        <div class="name">化学氮肥<br />用量减少</div>
+      </div>
+      <div class="round2">
+        <div class="arrowup"></div>
+        <div class="value">
+          26.6 kg
+        </div>
+        <div class="name">小麦平均亩产量</div>
+      </div>
+      <div class="round3">
+        <div class="arrowup"></div>
+        <div class="value">
+          8.81%
+        </div>
+        <div class="name">小麦增产率</div>
+      </div>
+      <div class="round4">
+        <div class="arrowdown"></div>
+        <div class="value">
+          53%
+        </div>
+        <div class="name">折纯氮35kg/ha<br />径流环境氮排放</div>
+      </div>
+      <div class="round5">
+        <div class="arrowdown"></div>
+        <div class="value">
+          2.85吨
+        </div>
+        <div class="name">
+          有机无机配施<br />
+          共减少氮排放
+        </div>
+      </div>
+      <div class="round6">
+        <div class="arrowup"></div>
+        <div class="value">13.1%</div>
+        <div class="name">
+          土壤有机质含量
+        </div>
+      </div>
+      <div class="round7">
+        <div class="arrowup"></div>
+        <div class="value">5.3%</div>
+        <div class="name">全氮含量</div>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +109,32 @@ export default {
       topOption: {},
       botOption: {},
       barOption: {},
+      swiperOption: {
+        //显示分页
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        //设置点击箭头
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        //自动轮播
+        autoplay: {
+          delay: 2000,
+          //当用户滑动图片后继续自动轮播
+          disableOnInteraction: false,
+        },
+        //开启循环模式
+        loop: false,
+      },
+
+      carouselArr: [
+        {
+          img: require('../../../assets/pollutionPrevent/farmland.png'),
+          name: '绿肥-苜蓿',
+        },
+      ],
     }
   },
   mounted() {
@@ -338,6 +437,9 @@ export default {
         data: ['有机无机配施', '传统化肥配施'],
         top: '1%',
         orient: 'horizontal',
+        itemGap: 15,
+        itemWidth: 10, // 设置宽度
+        itemHeight: 10, // 设置高度
         textStyle: {
           fontSize: 16,
           color: '#8597c1',
@@ -347,12 +449,12 @@ export default {
         {
           type: 'category',
           data: [
-            '株高',
-            '有效穗数',
-            '结实率',
-            '千粒重',
-            '理论产量',
             '实际产量',
+            '理论产量',
+            '千粒重',
+            '结实率',
+            '有效穗数',
+            '株高',
           ],
           axisPointer: {
             type: 'shadow',
@@ -403,6 +505,20 @@ export default {
           triggerEvent: true,
           show: true,
           inverse: true,
+          data: [
+            97.7,
+            92.5,
+            25.1,
+            23.1,
+            82.9,
+            95.5,
+            27,
+            25,
+            11172,
+            10655,
+            10875,
+            10650,
+          ],
           // data: getArrByKey(data, 'name'),
           axisLine: {
             show: false,
@@ -415,13 +531,21 @@ export default {
           },
           axisLabel: {
             interval: 0,
-            color: '#666',
+            color: '#7EFAFC',
             align: 'left',
-            margin: 20,
             fontSize: 13,
             formatter: function(value, index) {
-              return
-              value
+              if (index < 2) {
+                return value + 'cm'
+              } else if (index < 4) {
+                return value + '个'
+              } else if (index < 6) {
+                return value + '%'
+              } else if (index < 8) {
+                return value + 'g'
+              } else {
+                return value + 'kg/hm2'
+              }
             },
           },
         },
@@ -480,7 +604,8 @@ export default {
         {
           name: '有机无机配施',
           type: 'bar',
-          barWidth: '20',
+          barWidth: '10',
+          barCateGoryGap: '10',
           data: [10, 52, 56, 80, 45, 99],
           itemStyle: {
             barBorderRadius: 50,
@@ -493,7 +618,8 @@ export default {
         {
           name: '传统化肥配施',
           type: 'bar',
-          barWidth: '20',
+          barWidth: '10',
+          barCateGoryGap: '10',
           data: [100, 52, 56, 80, 45, 99],
           itemStyle: {
             barBorderRadius: 50,
@@ -532,12 +658,18 @@ export default {
       padding: 2px;
 
       &-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 80px;
         width: 100%;
         line-height: 70px;
         text-align: center;
         font-size: 24px;
         color: rgba(112, 226, 230, 1);
+        span {
+          padding: 0 10px;
+        }
       }
 
       &-body {
@@ -555,11 +687,56 @@ export default {
         }
       }
     }
-    .swiper {
+    .swipercom {
       width: 840px;
       height: 550px;
       background: url('../../../assets/pollutionPrevent/bg2.png') no-repeat;
       background-size: 100% 100%;
+      display: flex;
+
+      align-items: center;
+
+      .swiper-slide {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .img-border {
+        width: 780px;
+        height: 440px;
+      }
+      .img-name {
+        margin-top: 10px;
+        font-size: 24px;
+        line-height: 28px;
+        color: rgba(255, 255, 255, 1);
+      }
+      // .swiper-container {
+      //   overflow: auto;
+      // }
+      .swiper-button-prev {
+        left: 0px;
+        width: 30px;
+        height: 88px;
+        background: url('../../../assets/pollutionPrevent/arrow-left.png')
+          no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .swiper-button-next {
+        right: 0px;
+        width: 30px;
+        height: 88px;
+        background: url('../../../assets/pollutionPrevent/arrow-right.png')
+          no-repeat;
+        background-size: 100% 100%;
+      }
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        display: none !important;
+      }
     }
     .barchart {
       width: 452px;
@@ -570,18 +747,83 @@ export default {
       padding: 2px;
 
       &-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 80px;
         width: 100%;
         line-height: 70px;
         text-align: center;
         font-size: 24px;
         color: rgba(112, 226, 230, 1);
+        span {
+          padding: 0 10px;
+        }
       }
 
       &-body {
         height: calc(100% - 80px);
         width: 100%;
       }
+    }
+  }
+
+  &-bot {
+    width: 100%;
+    height: calc(100% - 624px);
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 120px;
+
+    .round(@background-color:#0c88fc) {
+      width: 160px;
+      height: 160px;
+      background-color: @background-color;
+      border-radius: 50%;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      .name {
+        font-size: 16px;
+      }
+    }
+
+    .arrowup {
+      width: 41px;
+      height: 44px;
+      background: url('../../../assets/pollutionPrevent/arrow-up.png') no-repeat;
+      background-size: 100% 100%;
+    }
+    .arrowdown {
+      width: 41px;
+      height: 44px;
+      background: url('../../../assets/pollutionPrevent/arrow-down.png')
+        no-repeat;
+      background-size: 100% 100%;
+    }
+    .round1 {
+      .round();
+    }
+    .round2 {
+      .round(@background-color:#64FFCF);
+    }
+    .round3 {
+      .round(@background-color:#FFC183);
+    }
+    .round4 {
+      .round(@background-color:#FF9CB8);
+    }
+    .round5 {
+      .round(@background-color:#E08F00);
+    }
+    .round6 {
+      .round(@background-color:#E3BBFF);
+    }
+    .round7 {
+      .round(@background-color:#99FF64);
     }
   }
 }
