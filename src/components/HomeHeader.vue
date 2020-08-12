@@ -31,12 +31,13 @@
     >
       创新机制
     </div>
-    <div
+    <div class="notvisible"></div>
+    <!-- <div
       :class="tags === 'system' ? 'active-right' : 'btn-right'"
       @click="gotoPage('system')"
     >
       系统设置
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -51,7 +52,24 @@ export default {
   methods: {
     gotoPage(tag) {
       this.tags = tag
-      this.$router.push(`/main/${tag}`)
+
+      switch (tag) {
+        case 'implement':
+          this.$router.push(`/main/${tag}`)
+          break
+        case 'home':
+          window.location.href = ''
+          break
+        case 'build':
+          window.location.href = '../construction.html'
+          break
+        case 'project':
+          window.location.href = '../project.html'
+          break
+        case 'innovation':
+          window.location.href = '../innovation.html'
+          break
+      }
     },
   },
   mounted() {
@@ -116,6 +134,11 @@ export default {
 
   .btn-right {
     .btn(@background-image: url('../assets/homePage/header/btn-right-bg.png'));
+  }
+
+  .notvisible {
+    .btn();
+    visibility: hidden;
   }
 }
 </style>

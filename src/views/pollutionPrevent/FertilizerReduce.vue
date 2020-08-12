@@ -83,6 +83,7 @@ export default {
       background-size: 100% 100%;
       opacity: 0.6;
       color: #fff;
+      font-size: 24px;
     }
 
     .btn-act {
@@ -93,6 +94,7 @@ export default {
         rgba(126, 250, 252, 1) 100%
       );
       opacity: 1;
+      font-size: 24px;
     }
   }
 }

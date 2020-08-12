@@ -179,18 +179,12 @@
           </div>
           <div class="specification-body">
             <div class="model">
-              <img
-                src="../assets/homePage/implement/slices/technology.png"
-                alt=""
-              />
+              <div class="model-img"></div>
               <div class="num">3份</div>
               <div class="title">单项治理技术规范</div>
             </div>
             <div class="model">
-              <img
-                src="../assets/homePage/implement/slices/technology.png"
-                alt=""
-              />
+              <div class="model-img"></div>
               <div class="num">4份</div>
               <div class="title">申报技术专利</div>
             </div>
@@ -287,7 +281,7 @@ export default {
       chemistry: 'organic',
       village: 'donglin',
       mapOption: {
-        color: ['#38B8C5', '#3F75FF', '#769BFE'],
+        color: ['#769BFE', '#38B8C5'],
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -315,7 +309,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['武汉市', '黄石市', '十堰市', '宜昌市', '襄阳市', '鄂州市'],
+            data: ['东林村', '万丰村', '庆丰村', '中荷村', '塘桥村', '胜利村'],
             axisLine: {
               show: true,
               lineStyle: {
@@ -370,13 +364,6 @@ export default {
             name: '110KV',
             type: 'bar',
             data: [50, 70, 60, 61, 75, 87],
-            barWidth: 10,
-            barGap: 0.3,
-          },
-          {
-            name: '15KV',
-            type: 'bar',
-            data: [70, 48, 73, 68, 53, 47],
             barWidth: 10,
             barGap: 0.3,
           },
@@ -534,7 +521,7 @@ export default {
       &-body {
         height: calc(100% - 43px);
         width: 100%;
-        padding: 30px 0px;
+        padding: 15px 0px;
         box-sizing: border-box;
         display: flex;
         flex-flow: column;
@@ -826,6 +813,13 @@ export default {
               font-family: PingFang SC;
               font-weight: 400;
               color: rgba(255, 255, 255, 1);
+            }
+            &-img {
+              width: 155px;
+              height: 157px;
+              background: url('../assets/homePage/implement/slices/technology.png')
+                no-repeat;
+              background-size: 100% 100%;
             }
           }
         }

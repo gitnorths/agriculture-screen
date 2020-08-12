@@ -16,7 +16,12 @@
       </div>
       <div class="swiper"></div>
       <div class="barchart">
-        <v-chart :options="barOption"></v-chart>
+        <div class="barchart-header">
+          项目实施效果
+        </div>
+        <div class="barchart-body">
+          <v-chart :options="barOption"></v-chart>
+        </div>
       </div>
     </div>
     <div class="fertilizepro-bot">
@@ -322,11 +327,17 @@ export default {
         show: false,
       },
       title: [],
+      grid: {
+        top: '10%',
+        left: '3%',
+        right: '3%',
+        bottom: '5%',
+        containLabel: true,
+      },
       legend: {
         data: ['有机无机配施', '传统化肥配施'],
-        top: '6%',
-        right: 'center',
-
+        top: '1%',
+        orient: 'horizontal',
         textStyle: {
           fontSize: 16,
           color: '#8597c1',
@@ -360,11 +371,57 @@ export default {
           },
           axisLabel: {
             show: true,
-            margin: 30,
+            margin: 10,
             interval: '0',
             textStyle: {
               fontSize: 18,
               color: '#99c3fd',
+            },
+            formatter: function(value) {
+              let str = ''
+              let num = 2 //每行显示字数
+              let valLength = value.length //该项x轴字数
+              let rowNum = Math.ceil(valLength / num) // 行数
+
+              if (rowNum > 1) {
+                for (let i = 0; i < rowNum; i++) {
+                  let temp = ''
+                  let start = i * num
+                  let end = start + num
+
+                  temp = value.substring(start, end) + '\n'
+                  str += temp
+                }
+                return str
+              } else {
+                return value
+              }
+            },
+          },
+        },
+        {
+          triggerEvent: true,
+          show: true,
+          inverse: true,
+          // data: getArrByKey(data, 'name'),
+          axisLine: {
+            show: false,
+          },
+          splitLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            interval: 0,
+            color: '#666',
+            align: 'left',
+            margin: 20,
+            fontSize: 13,
+            formatter: function(value, index) {
+              return
+              value
             },
           },
         },
@@ -423,8 +480,8 @@ export default {
         {
           name: '有机无机配施',
           type: 'bar',
-          barWidth: '20%',
-          data: [100, 52, 56, 80, 45, 99],
+          barWidth: '20',
+          data: [10, 52, 56, 80, 45, 99],
           itemStyle: {
             barBorderRadius: 50,
             borderWidth: 0,
@@ -436,7 +493,7 @@ export default {
         {
           name: '传统化肥配施',
           type: 'bar',
-          barWidth: '20%',
+          barWidth: '20',
           data: [100, 52, 56, 80, 45, 99],
           itemStyle: {
             barBorderRadius: 50,
@@ -511,6 +568,20 @@ export default {
       background-size: 100% 100%;
       box-sizing: border-box;
       padding: 2px;
+
+      &-header {
+        height: 80px;
+        width: 100%;
+        line-height: 70px;
+        text-align: center;
+        font-size: 24px;
+        color: rgba(112, 226, 230, 1);
+      }
+
+      &-body {
+        height: calc(100% - 80px);
+        width: 100%;
+      }
     }
   }
 }
