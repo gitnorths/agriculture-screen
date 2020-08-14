@@ -54,7 +54,7 @@
         <div class="value">
           28.1%
         </div>
-        <div class="name">化学氮肥<br />用量减少</div>
+        <div class="name">氮肥用量</div>
       </div>
       <div class="round2">
         <div class="arrowup"></div>
@@ -75,17 +75,14 @@
         <div class="value">
           53%
         </div>
-        <div class="name">折纯氮35kg/ha<br />径流环境氮排放</div>
+        <div class="name">径流环境氮排放</div>
       </div>
       <div class="round5">
         <div class="arrowdown"></div>
         <div class="value">
           2.85吨
         </div>
-        <div class="name">
-          有机无机配施<br />
-          共减少氮排放
-        </div>
+        <div class="name">有机无机配施<br />氮排放</div>
       </div>
       <div class="round6">
         <div class="arrowup"></div>
@@ -481,7 +478,7 @@ export default {
             },
             formatter: function(value) {
               let str = ''
-              let num = 2 //每行显示字数
+              let num = value.length > 3 ? 2 : 3 //每行显示字数
               let valLength = value.length //该项x轴字数
               let rowNum = Math.ceil(valLength / num) // 行数
 
@@ -544,7 +541,7 @@ export default {
               } else if (index < 8) {
                 return value + 'g'
               } else {
-                return value + 'kg/hm2'
+                return value + 'kg/h㎡'
               }
             },
           },
@@ -780,7 +777,7 @@ export default {
     box-sizing: border-box;
     padding: 0 120px;
 
-    .round(@background-color:#0c88fc) {
+    .round(@background-color:#37affe) {
       width: 160px;
       height: 160px;
       background-color: @background-color;
@@ -792,6 +789,10 @@ export default {
       color: #fff;
       .name {
         font-size: 16px;
+        text-align: center;
+      }
+      .value {
+        font-size: 32px;
       }
     }
 
@@ -812,22 +813,22 @@ export default {
       .round();
     }
     .round2 {
-      .round(@background-color:#64FFCF);
+      .round(@background-color:#40DFAC);
     }
     .round3 {
-      .round(@background-color:#FFC183);
+      .round(@background-color:#FDA569);
     }
     .round4 {
-      .round(@background-color:#FF9CB8);
+      .round(@background-color:#FC5793);
     }
     .round5 {
-      .round(@background-color:#E08F00);
+      .round(@background-color:#E69707);
     }
     .round6 {
-      .round(@background-color:#E3BBFF);
+      .round(@background-color:#C497FB);
     }
     .round7 {
-      .round(@background-color:#99FF64);
+      .round(@background-color:#90E644);
     }
   }
 }
