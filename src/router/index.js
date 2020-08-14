@@ -66,7 +66,39 @@ const routes = [
                 '../views/pollutionPrevent/fertilizerre/FertilizerReduce.vue'
               ),
           },
+          {
+            path: '/pollutionpre/fertilizerre/replacepro',
+            name: 'replacepro',
+            component: () =>
+              import('../views/pollutionPrevent/fertilizerre/NewReplace.vue'),
+          },
+          {
+            path: '/pollutionpre/fertilizerre/sysadjust',
+            name: 'sysadjust',
+            component: () =>
+              import('../views/pollutionPrevent/fertilizerre/SysAdjust.vue'),
+          },
         ],
+      },
+      {
+        path: '/pollutionpre/fieldsaving',
+        name: 'fieldsaving',
+        component: () => import('../views/pollutionPrevent/FieldSaving.vue'),
+      },
+      {
+        path: '/pollutionpre/reducedrug',
+        name: 'reducedrug',
+        component: () => import('../views/pollutionPrevent/ReduceDrugs.vue'),
+      },
+      {
+        path: '/pollutionpre/reuse',
+        name: 'reuse',
+        component: () => import('../views/pollutionPrevent/Reuse.vue'),
+      },
+      {
+        path: '/pollutionpre/purify',
+        name: 'purify',
+        component: () => import('../views/pollutionPrevent/PurifyPro.vue'),
       },
     ],
   },

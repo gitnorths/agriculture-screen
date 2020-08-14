@@ -61,7 +61,7 @@ export default {
   height: 100%;
 
   &-header {
-    height: 126px;
+    height: 120px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -101,7 +101,7 @@ export default {
 
   &-body {
     width: 100%;
-    height: calc(100% - 126px);
+    height: calc(100% - 120px);
   }
 }
 </style>

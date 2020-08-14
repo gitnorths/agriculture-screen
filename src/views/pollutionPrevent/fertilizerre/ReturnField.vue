@@ -42,7 +42,7 @@
         <img src="../../../assets/pollutionPrevent/dot2.png" alt="" />
       </div>
       <div class="effect-chart">
-        <v-chart :options="barOption"></v-chart>
+        <v-chart :options="barOption" :autoresize="true"></v-chart>
       </div>
       <div class="effect-desc">
         秸秆还田机作业效率为：13亩/小时
@@ -219,7 +219,6 @@ export default {
   height: 100%;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 
   .desc {

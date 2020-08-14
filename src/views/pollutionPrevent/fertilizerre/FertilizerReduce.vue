@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="usage-chart">
-          <v-chart :options="usageOption"></v-chart>
+          <v-chart :options="usageOption" :autoresize="true"></v-chart>
         </div>
       </div>
       <div class="swipercom">
@@ -44,7 +44,7 @@
           <img src="../../../assets/pollutionPrevent/dot2.png" alt="" />
         </div>
         <div class="effect-body">
-          <v-chart :options="barOption"></v-chart>
+          <v-chart :options="barOption" :autoresize="true"></v-chart>
         </div>
       </div>
     </div>
@@ -259,42 +259,7 @@ export default {
               },
             },
           },
-          {
-            offset: 10,
-            gridIndex: 0,
-            // triggerEvent: true,
-            show: true,
-            // inverse: true,
-            // data: [91, 915, 221, 2, 89, 95],
-            // axisLine: {
-            //   show: false,
-            // },
-            // splitLine: {
-            //   show: false,
-            // },
-            // axisTick: {
-            //   show: false,
-            // },
-            // axisLabel: {
-            //   interval: 0,
-            //   color: '#7EFAFC',
-            //   align: 'left',
-            //   fontSize: 13,
-            //   formatter: function(value, index) {
-            //     if (index < 2) {
-            //       return value + 'cm'
-            //     } else if (index < 4) {
-            //       return value + '个'
-            //     } else if (index < 6) {
-            //       return value + '%'
-            //     } else if (index < 8) {
-            //       return value + 'g'
-            //     } else {
-            //       return value + 'kg/hm2'
-            //     }
-            //   },
-            // },
-          },
+
           {
             gridIndex: 1,
             type: 'category',
@@ -345,6 +310,33 @@ export default {
             },
           },
           {
+            gridIndex: 0,
+            offset: 10,
+            gridIndex: 0,
+            triggerEvent: true,
+            show: true,
+            inverse: true,
+            data: [91, 915, 221, 2, 89, 95],
+            axisLine: {
+              show: false,
+            },
+            splitLine: {
+              show: false,
+            },
+            axisTick: {
+              show: false,
+            },
+            axisLabel: {
+              interval: 0,
+              color: '#7EFAFC',
+              align: 'left',
+              fontSize: 13,
+              formatter: function(value, index) {
+                return value + 'g/kg'
+              },
+            },
+          },
+          {
             gridIndex: 1,
             triggerEvent: true,
             show: true,
@@ -365,17 +357,7 @@ export default {
               align: 'left',
               fontSize: 13,
               formatter: function(value, index) {
-                if (index < 2) {
-                  return value + 'cm'
-                } else if (index < 4) {
-                  return value + '个'
-                } else if (index < 6) {
-                  return value + '%'
-                } else if (index < 8) {
-                  return value + 'g'
-                } else {
-                  return value + 'kg/hm2'
-                }
+                return value + 'g/kg'
               },
             },
           },
@@ -389,9 +371,18 @@ export default {
             show: false,
             gridIndex: 1,
           },
+          {
+            show: false,
+            gridIndex: 0,
+          },
+          {
+            show: false,
+            gridIndex: 1,
+          },
         ],
         series: [
           {
+            coordinateSystem: 'cartesian2d',
             name: '常规施肥',
             type: 'bar',
             barWidth: '10',
@@ -408,6 +399,7 @@ export default {
             yAxisIndex: 0,
           },
           {
+            coordinateSystem: 'cartesian2d',
             xAxisIndex: 0,
             yAxisIndex: 0,
             name: '配方施肥',
@@ -424,6 +416,7 @@ export default {
             },
           },
           {
+            coordinateSystem: 'cartesian2d',
             name: '常规施肥',
             type: 'bar',
             barWidth: '10',
@@ -440,6 +433,7 @@ export default {
             yAxisIndex: 1,
           },
           {
+            coordinateSystem: 'cartesian2d',
             name: '配方施肥',
             type: 'bar',
             barWidth: '10',
@@ -690,10 +684,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 10px 0;
 
   &-top {
-    height: 600px;
+    height: calc(100% - 150px);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -727,7 +720,7 @@ export default {
     }
     .swipercom {
       width: 840px;
-      height: 600px;
+      height: 100%;
       background: url('../../../assets/pollutionPrevent/bg2.png') no-repeat;
       background-size: 100% 100%;
       display: flex;
@@ -778,7 +771,7 @@ export default {
     }
     .effect {
       width: 452px;
-      height: 600px;
+      height: 100%;
       background: url('../../../assets/pollutionPrevent/bg1.png') no-repeat;
       background-size: 100% 100%;
       box-sizing: border-box;
@@ -807,7 +800,7 @@ export default {
   }
 
   &-bot {
-    height: calc(100% - 650px);
+    height: 150px;
     width: 100%;
 
     .compare-header {

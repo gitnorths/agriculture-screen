@@ -52,32 +52,48 @@
         </div>
         <div class="right-bot">
           <div
-            :class="projectIndex === 1 ? 'sub-btn1 sub-btn-act' : 'sub-btn1'"
-            @click="setProject(1)"
+            :class="
+              projectIndex === 'fertilizerre'
+                ? 'sub-btn1 sub-btn-act'
+                : 'sub-btn1'
+            "
+            @click="setProject('fertilizerre')"
           >
             化肥减施工程
           </div>
           <div
-            :class="projectIndex === 2 ? 'sub-btn2 sub-btn-act' : 'sub-btn2'"
-            @click="setProject(2)"
+            :class="
+              projectIndex === 'fieldsaving'
+                ? 'sub-btn2 sub-btn-act'
+                : 'sub-btn2'
+            "
+            @click="setProject('fieldsaving')"
           >
             农田节水工程
           </div>
           <div
-            :class="projectIndex === 3 ? 'sub-btn3 sub-btn-act' : 'sub-btn3'"
-            @click="setProject(3)"
+            :class="
+              projectIndex === 'reducedrug'
+                ? 'sub-btn3 sub-btn-act'
+                : 'sub-btn3'
+            "
+            @click="setProject('reducedrug')"
           >
             农田减药工程
           </div>
           <div
-            :class="projectIndex === 4 ? 'sub-btn4 sub-btn-act' : 'sub-btn4'"
-            @click="setProject(4)"
+            :class="
+              projectIndex === 'reuse' ? 'sub-btn4 sub-btn-act' : 'sub-btn4'
+            "
+            @click="setProject('reuse')"
           >
             农业废弃物利用工程
           </div>
           <div
-            :class="projectIndex === 5 ? 'sub-btn5 sub-btn-act' : 'sub-btn5'"
-            @click="setProject(5)"
+            :class="
+              projectIndex === 'purify' ? 'sub-btn5 sub-btn-act' : 'sub-btn5'
+            "
+            @click="setProject('purify')"
           >
             农田排水氮磷拦截净化工程
           </div>
@@ -100,13 +116,20 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.push('/main/implement')
+      // this.$router.push('/main/implement')
+      window.location.href = '../effect.html'
     },
     setBtnIndex(index) {
       this.btnIndex = index
+      switch (index) {
+        case 2:
+          window.location.href = '../effect/yzywrjp.html'
+          break
+      }
     },
     setProject(index) {
       this.projectIndex = index
+      this.$router.push(`/pollutionpre/${index}`)
     },
   },
 }
@@ -246,6 +269,8 @@ export default {
   &-body {
     width: 100%;
     height: calc(100% - 146px);
+    background: url('../../assets/pollutionPrevent/bg-bot.png') center bottom
+      no-repeat;
   }
 }
 </style>

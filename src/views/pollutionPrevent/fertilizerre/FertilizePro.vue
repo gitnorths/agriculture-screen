@@ -9,10 +9,10 @@
         </div>
         <div class="charts-body">
           <div class="chart-top">
-            <v-chart :options="topOption"></v-chart>
+            <v-chart :options="topOption" :autoresize="true"></v-chart>
           </div>
           <div class="chart-bot">
-            <v-chart :options="botOption"></v-chart>
+            <v-chart :options="botOption" :autoresize="true"></v-chart>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
           <img src="../../../assets/pollutionPrevent/dot2.png" alt="" />
         </div>
         <div class="barchart-body">
-          <v-chart :options="barOption"></v-chart>
+          <v-chart :options="barOption" :autoresize="true"></v-chart>
         </div>
       </div>
     </div>
@@ -249,7 +249,7 @@ export default {
               },
             },
             emphasis: {
-              show: true,
+              show: false,
               textStyle: {
                 fontSize: '12',
               },
@@ -639,10 +639,13 @@ export default {
 .fertilizepro {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 
   &-top {
     width: 100%;
-    height: 600px;
+    height: calc(100% -210px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -651,7 +654,7 @@ export default {
 
     .charts {
       width: 452px;
-      height: 552px;
+      height: 100%;
       background: url('../../../assets/pollutionPrevent/bg1.png') no-repeat;
       background-size: 100% 100%;
       box-sizing: border-box;
@@ -689,7 +692,7 @@ export default {
     }
     .swipercom {
       width: 840px;
-      height: 550px;
+      height: 100%;
       background: url('../../../assets/pollutionPrevent/bg2.png') no-repeat;
       background-size: 100% 100%;
       display: flex;
@@ -740,7 +743,7 @@ export default {
     }
     .barchart {
       width: 452px;
-      height: 552px;
+      height: 100%;
       background: url('../../../assets/pollutionPrevent/bg1.png') no-repeat;
       background-size: 100% 100%;
       box-sizing: border-box;
@@ -770,9 +773,10 @@ export default {
 
   &-bot {
     width: 100%;
-    height: calc(100% - 624px);
+    height: 200px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
     padding: 0 120px;
 

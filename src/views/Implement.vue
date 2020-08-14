@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="charts">
-          <v-chart :options="mapOption" />
+          <v-chart :options="mapOption" :autoresize="true" />
         </div>
       </div>
       <div class="reducepollu">
