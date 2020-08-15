@@ -14,24 +14,31 @@
       </div>
     </div>
     <div class="reuse-mid">
-      <swiper :options="swiperOption">
+      <swiper
+        class="swiper gallery-top"
+        :options="swiperOptionTop"
+        ref="swiperTop"
+      >
         <swiper-slide
           class="swiper-slide"
           v-for="(item, index) in carouselArr"
           :key="index"
         >
           <div class="img-border">
-            <img :src="item.img" width="100%" />
-          </div>
-          <div class="img-name">
-            {{ item.name }}
+            <img :src="item.img" width="100%" height="100%" />
           </div>
         </swiper-slide>
-        <!-- 分页器 -->
-        <div class="swiper-pagination" slot="pagination"></div>
-        <!-- 左右箭头 -->
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
+      </swiper>
+      <swiper
+        class="swiper gallery-thumbs"
+        :options="swiperOptionThumbs"
+        ref="swiperThumbs"
+      >
+        <swiper-slide v-for="(item, index) in carouselArr" :key="index + 'a'">
+          <div class="slidethumb">
+            <img :src="item.img" width="100%" height="100%" />
+          </div>
+        </swiper-slide>
       </swiper>
     </div>
     <div class="reuse-right">
@@ -52,32 +59,50 @@
 
 <script>
 import echarts from 'echarts'
+
 export default {
   data() {
     return {
-      swiperOption: {
-        //显示分页
-        pagination: {
-          el: '.swiper-pagination',
-        },
-        //设置点击箭头
+      isInit: 1,
+      swiperOptionTop: {
+        loop: true,
+        loopedSlides: 5, // looped slides should be the same
+        spaceBetween: 10,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        //自动轮播
-        autoplay: {
-          delay: 2000,
-          //当用户滑动图片后继续自动轮播
-          disableOnInteraction: false,
-        },
-        //开启循环模式
-        loop: false,
+      },
+      swiperOptionThumbs: {
+        loop: true,
+        loopedSlides: 5, // looped slides should be the same
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true,
       },
       carouselArr: [
         {
-          img: require('../../assets/pollutionPrevent/farmland.png'),
-          name: '绿肥-苜蓿',
+          img: require('../../assets/swiper/reuse/a.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/b.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/c.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/d.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/e.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/f.jpg'),
+        },
+        {
+          img: require('../../assets/swiper/reuse/g.jpg'),
         },
       ],
       saveOption: {
@@ -136,6 +161,11 @@ export default {
       },
       barOption: {},
     }
+  },
+  computed: {
+    swiper() {
+      return this.$refs.swiperTop.$swiper
+    },
   },
   mounted() {
     let colorList1 = [
@@ -275,7 +305,7 @@ export default {
           type: 'bar',
           barWidth: '10',
           barCateGoryGap: 5,
-          data: [1, 1, 1, 56, 9, 6],
+          data: [4, 4, 4, 20, 10, 6],
           itemStyle: {
             barBorderRadius: 50,
             borderWidth: 0,
@@ -302,6 +332,15 @@ export default {
         },
       ],
     }
+
+    setTimeout(() => {
+      this.$nextTick(() => {
+        const swiperTop = this.$refs.swiperTop.swiper
+        const swiperThumbs = this.$refs.swiperThumbs.swiper
+        swiperTop.controller.control = swiperThumbs
+        swiperThumbs.controller.control = swiperTop
+      })
+    }, 100)
   },
 }
 </script>
@@ -352,46 +391,84 @@ export default {
     height: 700px;
     background: url('../../assets/pollutionPrevent/bg2.png') no-repeat;
     background-size: 100% 100%;
-    display: flex;
-
-    align-items: center;
-
-    .swiper-slide {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: center;
-    }
 
     .img-border {
       width: 780px;
       height: 440px;
     }
-    .img-name {
-      margin-top: 10px;
-      font-size: 24px;
-      line-height: 28px;
-      color: rgba(255, 255, 255, 1);
+
+    .slidethumb {
+      width: 150px;
+      height: 110px;
     }
 
-    .swiper-button-prev {
-      left: 0px;
-      width: 30px;
-      height: 88px;
-      background: url('../../assets/pollutionPrevent/arrow-left.png') no-repeat;
-      background-size: 100% 100%;
-    }
+    .gallery-top {
+      .swiper-slide {
+        top: 70px;
+        left: 40px;
+      }
 
-    .swiper-button-next {
-      right: 0px;
-      width: 30px;
-      height: 88px;
-      background: url('../../assets/pollutionPrevent/arrow-right.png') no-repeat;
-      background-size: 100% 100%;
+      .swiper-slide-active {
+        .img-border {
+          border: 4px solid rgba(126, 250, 252, 1);
+          border-radius: 12px;
+        }
+      }
     }
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      display: none !important;
+    .swiper {
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+      }
+      &.gallery-top {
+        height: 78%;
+        width: 100%;
+      }
+      &.gallery-thumbs {
+        top: -10px;
+        height: 25%;
+        box-sizing: border-box;
+        overflow-y: auto;
+        padding: 10px 0;
+      }
+      &.gallery-thumbs .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+      }
+      &.gallery-thumbs .swiper-slide-active {
+        .slidethumb {
+          position: relative;
+          border: 4px solid rgba(126, 250, 252, 1);
+          border-radius: 8px;
+          background-color: rgba(126, 250, 252, 1);
+        }
+        .slidethumb:after,
+        .slidethumb:before {
+          bottom: 100%;
+          left: 50%;
+          border: solid transparent;
+          content: ' ';
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        .slidethumb:after {
+          border-color: rgba(136, 183, 213, 0);
+          border-bottom-color: rgba(126, 250, 252, 1);
+          border-width: 10px;
+          margin-left: -10px;
+        }
+        .slidethumb:before {
+          border-color: rgba(194, 225, 245, 0);
+          border-bottom-color: #c2e1f5;
+          border-width: 13px;
+          margin-left: -13px;
+        }
+        opacity: 1;
+      }
     }
   }
   &-right {

@@ -60,7 +60,7 @@
           :key="index"
         >
           <div class="img-border">
-            <img :src="item.img" width="100%" />
+            <img :src="item.img" width="100%" height="100%" />
           </div>
           <div class="img-name">
             {{ item.name }}
@@ -97,22 +97,46 @@ export default {
           disableOnInteraction: false,
         },
         //开启循环模式
-        loop: false,
+        loop: true,
       },
       carouselArr: [
         {
-          img: require('../../assets/pollutionPrevent/farmland.png'),
-          name: '绿肥-苜蓿',
+          img: require('../../assets/swiper/saving/1.jpg'),
+          name: '控制设备安装在姚湾泵站',
+        },
+        {
+          img: require('../../assets/swiper/saving/2.jpg'),
+          name: '拉斐尔电磁阀',
+        },
+        {
+          img: require('../../assets/swiper/saving/3.jpg'),
+          name: '太阳能控制箱',
+        },
+        {
+          img: require('../../assets/swiper/saving/4.jpg'),
+          name: '物联网控制设备箱',
+        },
+        {
+          img: require('../../assets/swiper/saving/5.jpg'),
+          name: '智能灌溉1',
+        },
+        {
+          img: require('../../assets/swiper/saving/6.jpg'),
+          name: '智能灌溉2',
+        },
+        {
+          img: require('../../assets/swiper/saving/7.jpg'),
+          name: '主控制设备箱',
         },
       ],
       saveOption: {
         series: [
           {
             type: 'gauge',
-            radius: 90,
+            radius: 80,
             startAngle: 180,
             endAngle: 0,
-            center: ['50%', '50%'],
+            center: ['55%', '55%'],
             axisLine: {
               show: true,
               lineStyle: {
@@ -296,6 +320,7 @@ export default {
         color: #fff;
 
         .word-left {
+          text-indent: 2em;
           width: 50%;
           height: 100%;
           box-sizing: border-box;
@@ -355,6 +380,10 @@ export default {
     .swiper-button-next::after,
     .swiper-button-prev::after {
       display: none !important;
+    }
+
+    .swiper-pagination {
+      display: none;
     }
   }
 }

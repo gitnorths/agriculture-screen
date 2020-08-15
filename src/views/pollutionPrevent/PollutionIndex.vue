@@ -111,7 +111,7 @@ export default {
   data() {
     return {
       btnIndex: 1,
-      projectIndex: 1,
+      projectIndex: 'fertilizerre',
     }
   },
   methods: {
@@ -190,11 +190,12 @@ export default {
           text-align: center;
           width: @width;
           font-size: 20px;
-          color: rgba(126, 250, 252, 1);
+          color: #5e94a5;
         }
         .btn-act {
           background: url('../../assets/pollutionPrevent/btn-act.png') no-repeat;
           background-size: 100% 100%;
+          color: rgba(126, 250, 252, 1) !important;
         }
 
         .btn1 {
@@ -268,9 +269,11 @@ export default {
 
   &-body {
     width: 100%;
-    height: calc(100% - 146px);
+    // height: calc(100% - 146px);
+    height: 934px;
     background: url('../../assets/pollutionPrevent/bg-bot.png') center bottom
       no-repeat;
+    background-color: #051628;
   }
 }
 </style>

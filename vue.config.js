@@ -11,7 +11,7 @@ module.exports = {
   //     locales: ['zh-cn'],
   //   },
   // },
-  // transpileDependencies: ['vue-echarts', 'resize-detector'],
+  transpileDependencies: ['vue-echarts', 'resize-detector'],
   publicPath: './',
   productionSourceMap: false,
   chainWebpack: (config) => {

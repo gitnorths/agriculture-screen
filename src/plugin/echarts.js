@@ -10,5 +10,6 @@ import ECharts from 'vue-echarts'
 // import 'echarts/lib/chart/bar'
 // import 'echarts/lib/chart/gauge'
 import 'echarts'
+import 'echarts-liquidfill'
 
 Vue.component('v-chart', ECharts)

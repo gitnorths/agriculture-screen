@@ -24,7 +24,7 @@
             :key="index"
           >
             <div class="img-border">
-              <img :src="item.img" width="100%" />
+              <img :src="item.img" width="100%" height="100%" />
             </div>
             <div class="img-name">
               {{ item.name }}
@@ -123,13 +123,33 @@ export default {
           disableOnInteraction: false,
         },
         //开启循环模式
-        loop: false,
+        loop: true,
       },
 
       carouselArr: [
         {
-          img: require('../../../assets/pollutionPrevent/farmland.png'),
-          name: '绿肥-苜蓿',
+          img: require('../../../assets/swiper/fertilizerReduce/1.png'),
+          name: '测土配方',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/2.jpg'),
+          name: '测土配方肥供应点',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/11.jpg'),
+          name: '有机肥施肥3',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/12.jpg'),
+          name: '有机肥施肥机',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/13.jpg'),
+          name: '有机物施肥机2',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/6.jpg'),
+          name: '楼草机',
         },
       ],
     }
@@ -417,6 +437,22 @@ export default {
         },
       ],
     }
+    let barData1 = [
+      '10875kg/h㎡',
+      '11172kg/h㎡',
+      '27.0g',
+      '82.9%',
+      '25.1个',
+      '97.7cm',
+    ]
+    let barData2 = [
+      '10650kg/h㎡',
+      '10655kg/h㎡',
+      '25.0g',
+      '95.5%',
+      '23.1个',
+      '92.5cm',
+    ]
     this.barOption = {
       color: ['#00C5FC', '#19DB95'],
       tooltip: {
@@ -426,7 +462,7 @@ export default {
       grid: {
         top: '10%',
         left: '3%',
-        right: '3%',
+        right: '30%',
         bottom: '5%',
         containLabel: true,
       },
@@ -458,9 +494,6 @@ export default {
           },
           axisLine: {
             show: false,
-            lineStyle: {
-              color: '#8597c1',
-            },
           },
           splitLine: {
             show: false,
@@ -471,7 +504,7 @@ export default {
           axisLabel: {
             show: true,
             margin: 10,
-            interval: '0',
+            interval: 0,
             textStyle: {
               fontSize: 18,
               color: '#99c3fd',
@@ -499,51 +532,29 @@ export default {
           },
         },
         {
-          triggerEvent: true,
-          show: true,
-          inverse: true,
+          type: 'category',
           data: [
-            97.7,
-            92.5,
-            25.1,
-            23.1,
-            82.9,
-            95.5,
-            27,
-            25,
-            11172,
-            10655,
-            10875,
-            10650,
+            '实际产量',
+            '理论产量',
+            '千粒重',
+            '结实率',
+            '有效穗数',
+            '株高',
           ],
-          // data: getArrByKey(data, 'name'),
           axisLine: {
-            show: false,
-          },
-          splitLine: {
             show: false,
           },
           axisTick: {
             show: false,
           },
           axisLabel: {
-            interval: 0,
-            color: '#7EFAFC',
-            align: 'left',
-            fontSize: 13,
-            formatter: function(value, index) {
-              if (index < 2) {
-                return value + 'cm'
-              } else if (index < 4) {
-                return value + '个'
-              } else if (index < 6) {
-                return value + '%'
-              } else if (index < 8) {
-                return value + 'g'
-              } else {
-                return value + 'kg/h㎡'
-              }
-            },
+            show: false,
+          },
+          splitArea: {
+            show: false,
+          },
+          splitLine: {
+            show: false,
           },
         },
       ],
@@ -588,22 +599,61 @@ export default {
           },
           axisLabel: {
             show: false,
-            formatter: '{value} %',
-            interval: '0',
-            textStyle: {
-              fontSize: 16,
-              color: '#8597c1',
-            },
           },
         },
       ],
       series: [
         {
+          yAxisIndex: 1,
+          type: 'bar',
+          barWidth: '10',
+          barGap: '100%',
+          data: [98, 98, 98, 98, 98, 98],
+          zlevel: 1,
+          itemStyle: {
+            color: 'transparent',
+          },
+          label: {
+            show: true,
+            position: 'right',
+            textStyle: {
+              color: '#7EFAFC',
+              fontSize: 16,
+            },
+            formatter: function({ dataIndex }) {
+              return barData1[dataIndex]
+            },
+          },
+        },
+        {
+          yAxisIndex: 1,
+          zlevel: 1,
+          type: 'bar',
+          barGap: '100%',
+          barWidth: '10',
+          data: [98, 98, 98, 98, 98, 98],
+          itemStyle: {
+            color: 'transparent',
+          },
+          label: {
+            show: true,
+            position: 'right',
+            textStyle: {
+              //数值样式
+              color: '#7EFAFC',
+              fontSize: 16,
+            },
+            formatter: function({ dataIndex }) {
+              return barData2[dataIndex]
+            },
+          },
+        },
+        {
+          zlevel: 2,
           name: '有机无机配施',
           type: 'bar',
           barWidth: '10',
-          barCateGoryGap: '10',
-          data: [10, 52, 56, 80, 45, 99],
+          data: [96, 98, 90, 77, 45, 97.7],
           itemStyle: {
             barBorderRadius: 50,
             borderWidth: 0,
@@ -613,11 +663,12 @@ export default {
           },
         },
         {
+          zlevel: 2,
           name: '传统化肥配施',
           type: 'bar',
           barWidth: '10',
-          barCateGoryGap: '10',
-          data: [100, 52, 56, 80, 45, 99],
+          barGap: '100%',
+          data: [93, 96, 88, 90, 42, 92.5],
           itemStyle: {
             barBorderRadius: 50,
             borderWidth: 0,
@@ -642,7 +693,7 @@ export default {
 
   &-top {
     width: 100%;
-    height: calc(100% -210px);
+    height: calc(100% - 270px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -737,6 +788,10 @@ export default {
       .swiper-button-prev::after {
         display: none !important;
       }
+
+      .swiper-pagination {
+        display: none;
+      }
     }
     .barchart {
       width: 452px;
@@ -770,7 +825,7 @@ export default {
 
   &-bot {
     width: 100%;
-    height: 200px;
+    height: 260px;
     display: flex;
     justify-content: space-between;
     align-items: center;

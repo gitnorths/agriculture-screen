@@ -101,7 +101,9 @@ export default {
 
   &-body {
     width: 100%;
-    height: calc(100% - 120px);
+    // height: calc(100% - 120px);
+    height: 814px;
+    // overflow: auto;
   }
 }
 </style>
