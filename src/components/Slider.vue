@@ -18,6 +18,9 @@
           <div class="img-border">
             <img :src="item.img" width="100%" height="100%" />
           </div>
+          <div class="img-name">
+            {{ item.name }}
+          </div>
         </swiper-slide>
       </swiper>
       <swiper
@@ -62,22 +65,40 @@ export default {
         physical: {
           title: '稻田病虫害物理防治示范区（杀虫灯和诱虫黄板）',
           carouselArr: [
-            { img: require('../assets/swiper/reducedrug/p-1.jpg') },
-            { img: require('../assets/swiper/reducedrug/p-2.jpg') },
+            {
+              img: require('../assets/swiper/reducedrug/p-1.jpg'),
+              name: '中荷诱虫黄板使用',
+            },
+            {
+              img: require('../assets/swiper/reducedrug/p-2.jpg'),
+              name: '杀虫灯',
+            },
           ],
         },
         chemistry: {
           title: '高效植保机械在示范区稻田和麦田作业场景',
           carouselArr: [
-            { img: require('../assets/swiper/reducedrug/c-1.jpg') },
-            { img: require('../assets/swiper/reducedrug/c-2.png') },
+            {
+              img: require('../assets/swiper/reducedrug/c-1.jpg'),
+              name: '东林高效植保机',
+            },
+            {
+              img: require('../assets/swiper/reducedrug/c-2.png'),
+              name: '高效植保机2',
+            },
           ],
         },
         biological: {
           title: '性诱捕器',
           carouselArr: [
-            { img: require('../assets/swiper/reducedrug/s-1.png') },
-            { img: require('../assets/swiper/reducedrug/s-2.jpg') },
+            {
+              img: require('../assets/swiper/reducedrug/s-1.png'),
+              name: '生物防治',
+            },
+            {
+              img: require('../assets/swiper/reducedrug/s-2.jpg'),
+              name: '生物防治2',
+            },
           ],
         },
       },
@@ -133,6 +154,14 @@ export default {
   overflow: hidden;
 }
 .swiper {
+  .img-name {
+    text-align: center;
+    margin-top: -40px;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 1);
+    z-index: 100;
+  }
   .swiper-slide {
     background-size: cover;
     background-position: center;

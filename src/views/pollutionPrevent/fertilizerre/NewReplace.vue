@@ -74,18 +74,31 @@ export default {
       },
       carouselArr: [
         {
-          img: require('../../../assets/swiper/fertilizerReduce/7.jpg'),
-          name: '绿肥-蚕豆',
+          img: require('../../../assets/swiper/fertilizerReduce/1.png'),
+          name: '测土配方',
         },
         {
-          img: require('../../../assets/swiper/fertilizerReduce/8.png'),
-          name: '绿肥-苜蓿',
+          img: require('../../../assets/swiper/fertilizerReduce/2.jpg'),
+          name: '测土配方肥供应点',
         },
         {
-          img: require('../../../assets/swiper/fertilizerReduce/9.png'),
-          name: '绿肥-紫云英',
+          img: require('../../../assets/swiper/fertilizerReduce/3.jpg'),
+          name: '插秧与肥料深施一体机',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/4.jpg'),
+          name: '秸秆粉碎还田机',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/5.jpg'),
+          name: '秸秆饲料粉碎机',
+        },
+        {
+          img: require('../../../assets/swiper/fertilizerReduce/6.jpg'),
+          name: '楼草机',
         },
       ],
+
       option: {},
       barOption: {},
     }

@@ -27,6 +27,9 @@
           <div class="img-border">
             <img :src="item.img" width="100%" height="100%" />
           </div>
+          <div class="img-name">
+            {{ item.name }}
+          </div>
         </swiper-slide>
       </swiper>
       <swiper
@@ -85,24 +88,31 @@ export default {
       carouselArr: [
         {
           img: require('../../assets/swiper/reuse/a.jpg'),
+          name: '废弃物收集池',
         },
         {
           img: require('../../assets/swiper/reuse/b.jpg'),
+          name: '废弃物收集池2',
         },
         {
           img: require('../../assets/swiper/reuse/c.jpg'),
+          name: '捡拾压捆机',
         },
         {
           img: require('../../assets/swiper/reuse/d.jpg'),
+          name: '秸秆打捆机',
         },
         {
           img: require('../../assets/swiper/reuse/e.jpg'),
+          name: '秸秆堆场',
         },
         {
           img: require('../../assets/swiper/reuse/f.jpg'),
+          name: '树木枝条粉碎机',
         },
         {
           img: require('../../assets/swiper/reuse/g.jpg'),
+          name: '有机废弃物碳化设备',
         },
       ],
       saveOption: {
@@ -416,6 +426,15 @@ export default {
       }
     }
     .swiper {
+      .img-name {
+        text-align: center;
+        margin-top: -40px;
+        font-size: 24px;
+        line-height: 28px;
+        color: rgba(255, 255, 255, 1);
+        z-index: 100;
+      }
+
       .swiper-slide {
         background-size: cover;
         background-position: center;

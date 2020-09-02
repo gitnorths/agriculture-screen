@@ -27,6 +27,9 @@
           <div class="img-border">
             <img :src="item.img" width="100%" height="100%" />
           </div>
+          <div class="img-name">
+            {{ item.name }}
+          </div>
         </swiper-slide>
       </swiper>
       <swiper
@@ -108,51 +111,67 @@ export default {
       carouselArr: [
         {
           img: require('../../assets/swiper/p/1.jpg'),
+          name: '促沉池',
         },
         {
-          img: require('../../assets/swiper/p/2.jpg'),
+          img: require('../../assets/swiper/p/2.png'),
+          name: '汇水区1-水葫芦',
         },
         {
           img: require('../../assets/swiper/p/3.jpg'),
+          name: '汇水区2-菖蒲鸢尾',
         },
         {
           img: require('../../assets/swiper/p/4.jpg'),
+          name: '汇水区4',
         },
         {
           img: require('../../assets/swiper/p/5.jpg'),
+          name: '汇水区5',
         },
         {
           img: require('../../assets/swiper/p/6.jpg'),
+          name: '汇水区6',
         },
         {
           img: require('../../assets/swiper/p/7.jpg'),
+          name: '',
         },
         {
           img: require('../../assets/swiper/p/8.jpg'),
+          name: '木栈道平台1',
         },
         {
           img: require('../../assets/swiper/p/9.jpg'),
+          name: '木栈道平台2',
         },
         {
           img: require('../../assets/swiper/p/10.jpg'),
+          name: '木栈道平台3',
         },
         {
           img: require('../../assets/swiper/p/11.jpg'),
+          name: '生态沟渠2',
         },
         {
           img: require('../../assets/swiper/p/12.jpg'),
+          name: '生态沟渠3',
         },
         {
           img: require('../../assets/swiper/p/13.jpg'),
+          name: '木栈道平台4',
         },
-        {
-          img: require('../../assets/swiper/p/14.jpg'),
-        },
+        // {
+        //   img: require('../../assets/swiper/p/14.jpg'),
+        //   name: '',
+        // },
         {
           img: require('../../assets/swiper/p/15.jpg'),
+          name: '生态塘1',
         },
         {
           img: require('../../assets/swiper/p/16.jpg'),
+          name: '生态塘2',
         },
       ],
     }
@@ -244,6 +263,14 @@ export default {
       }
     }
     .swiper {
+      .img-name {
+        text-align: center;
+        margin-top: -40px;
+        font-size: 24px;
+        line-height: 28px;
+        color: rgba(255, 255, 255, 1);
+        z-index: 100;
+      }
       .swiper-slide {
         background-size: cover;
         background-position: center;
