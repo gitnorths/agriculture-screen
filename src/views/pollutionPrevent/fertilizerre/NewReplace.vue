@@ -23,7 +23,7 @@
           :key="index"
         >
           <div class="img-border">
-            <img :src="item.img" width="100%" height="100%" />
+            <img :src="item.img" height="100%" />
           </div>
           <div class="img-name">
             {{ item.name }}
@@ -644,6 +644,9 @@ export default {
     .img-border {
       width: 780px;
       height: 440px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .img-name {
       margin-top: 10px;

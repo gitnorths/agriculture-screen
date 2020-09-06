@@ -242,6 +242,9 @@ export default {
     .img-border {
       width: 780px;
       height: 440px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .slidethumb {
