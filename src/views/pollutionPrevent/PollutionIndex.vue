@@ -132,6 +132,9 @@ export default {
       this.$router.push(`/pollutionpre/${index}`)
     },
   },
+  mounted() {
+    this.projectIndex = this.$route.name
+  },
 }
 </script>
 

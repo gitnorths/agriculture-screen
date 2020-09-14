@@ -50,7 +50,11 @@
             </div>
           </div>
           <div class="ph-chart">
-            <v-chart :options="phOption" :autoresize="true"></v-chart>
+            <v-chart
+              :options="phOption"
+              :autoresize="true"
+              ref="phchart"
+            ></v-chart>
           </div>
         </div>
       </div>
@@ -172,6 +176,26 @@ export default {
       ],
       liquidfillOption: {},
       barOption: {},
+      organicData: {
+        before: [31.8, 0, 0],
+        winter: [0, 32.56, 32.93],
+        purple: [0, 33.94, 34.22],
+      },
+      phData: {
+        before: [8.07, 0, 0],
+        winter: [0, 8.12, 8.11],
+        purple: [0, 8.05, 8.01],
+      },
+      weightData: {
+        before: [1.205, 0, 0],
+        winter: [0, 1.204, 1.198],
+        purple: [0, 1.188, 1.175],
+      },
+      gapData: {
+        before: [53.77, 0, 0],
+        winter: [0, 53.8, 53.91],
+        purple: [0, 54.52, 54.87],
+      },
       phOption: {
         tooltip: {
           trigger: 'axis',
@@ -235,33 +259,31 @@ export default {
             },
           },
         ],
-        yAxis: [
-          {
-            type: 'value',
-            max: 50,
-            splitNumber: 5,
-            axisLabel: {
-              textStyle: {
-                color: '#a8aab0',
-                fontStyle: 'normal',
-                fontFamily: '微软雅黑',
-                fontSize: 12,
-              },
-            },
-            axisLine: {
-              show: false,
-            },
-            axisTick: {
-              show: false,
-            },
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: '#0B48B8',
-              },
+        yAxis: {
+          type: 'value',
+          max: 50,
+          splitNumber: 5,
+          axisLabel: {
+            textStyle: {
+              color: '#a8aab0',
+              fontStyle: 'normal',
+              fontFamily: '微软雅黑',
+              fontSize: 12,
             },
           },
-        ],
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#0B48B8',
+            },
+          },
+        },
         series: [
           {
             name: '试验前',
@@ -700,6 +722,40 @@ export default {
     },
     setEffect(effect) {
       this.effect = effect
+
+      switch (effect) {
+        case 'organic':
+          this.phOption.series[0].data = this.organicData.before
+          this.phOption.series[1].data = this.organicData.winter
+          this.phOption.series[2].data = this.organicData.purple
+          this.phOption.yAxis.max = 50
+          this.phOption.yAxis.splitNumber = 5
+          break
+        case 'ph':
+          this.phOption.series[0].data = this.phData.before
+          this.phOption.series[1].data = this.phData.winter
+          this.phOption.series[2].data = this.phData.purple
+          this.phOption.yAxis.max = 10
+          this.phOption.yAxis.splitNumber = 2
+          break
+        case 'density':
+          this.phOption.series[0].data = this.weightData.before
+          this.phOption.series[1].data = this.weightData.winter
+          this.phOption.series[2].data = this.weightData.purple
+          this.phOption.yAxis.max = 2
+          this.phOption.yAxis.splitNumber = 1
+          break
+        case 'porosity':
+          this.phOption.series[0].data = this.gapData.before
+          this.phOption.series[1].data = this.gapData.winter
+          this.phOption.series[2].data = this.gapData.purple
+          this.phOption.yAxis.max = 60
+          this.phOption.yAxis.splitNumber = 5
+          break
+        default:
+          break
+      }
+      // this.$refs['phchart'].mergeOptions(this.phOption)
     },
   },
   mounted() {
@@ -873,6 +929,10 @@ export default {
     }
 
     this.setBar()
+
+    this.phOption.series[0].data = this.organicData.before
+    this.phOption.series[1].data = this.organicData.winter
+    this.phOption.series[2].data = this.organicData.purple
   },
 }
 </script>

@@ -52,6 +52,10 @@ export default {
       this.$router.push(`/pollutionpre/fertilizerre/${project}`)
     },
   },
+  mounted() {
+    // console.log('this.$router.path', this.$route.name)
+    this.projectName = this.$route.name
+  },
 }
 </script>
 
