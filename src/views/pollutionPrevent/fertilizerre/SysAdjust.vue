@@ -203,7 +203,7 @@ export default {
             let str = params[0].name + '<br/>'
             for (let i = 0; i < params.length; i++) {
               if (params[i].value > 0) {
-                str += params[i].seriesName + params[i].value + 'g/kg<br/>'
+                str += params[i].seriesName + params[i].value + '（g/kg）<br/>'
               }
             }
             return str
@@ -730,6 +730,19 @@ export default {
           this.phOption.series[2].data = this.organicData.purple
           this.phOption.yAxis.max = 50
           this.phOption.yAxis.splitNumber = 5
+          this.phOption.tooltip = {
+            trigger: 'axis',
+            formatter: (params) => {
+              let str = params[0].name + '<br/>'
+              for (let i = 0; i < params.length; i++) {
+                if (params[i].value > 0) {
+                  str +=
+                    params[i].seriesName + params[i].value + '（g/kg）<br/>'
+                }
+              }
+              return str
+            },
+          }
           break
         case 'ph':
           this.phOption.series[0].data = this.phData.before
@@ -737,6 +750,21 @@ export default {
           this.phOption.series[2].data = this.phData.purple
           this.phOption.yAxis.max = 10
           this.phOption.yAxis.splitNumber = 2
+          this.phOption.tooltip = {
+            trigger: 'axis',
+            formatter: (params) => {
+              let str = params[0].name + '<br/>'
+              for (let i = 0; i < params.length; i++) {
+                if (params[i].value > 0) {
+                  str +=
+                    params[i].seriesName +
+                    params[i].value +
+                    '（土水比 1:2.5）<br/>'
+                }
+              }
+              return str
+            },
+          }
           break
         case 'density':
           this.phOption.series[0].data = this.weightData.before
@@ -744,6 +772,19 @@ export default {
           this.phOption.series[2].data = this.weightData.purple
           this.phOption.yAxis.max = 2
           this.phOption.yAxis.splitNumber = 1
+          this.phOption.tooltip = {
+            trigger: 'axis',
+            formatter: (params) => {
+              let str = params[0].name + '<br/>'
+              for (let i = 0; i < params.length; i++) {
+                if (params[i].value > 0) {
+                  str +=
+                    params[i].seriesName + params[i].value + '（g/cm³）<br/>'
+                }
+              }
+              return str
+            },
+          }
           break
         case 'porosity':
           this.phOption.series[0].data = this.gapData.before
@@ -751,6 +792,18 @@ export default {
           this.phOption.series[2].data = this.gapData.purple
           this.phOption.yAxis.max = 60
           this.phOption.yAxis.splitNumber = 5
+          this.phOption.tooltip = {
+            trigger: 'axis',
+            formatter: (params) => {
+              let str = params[0].name + '<br/>'
+              for (let i = 0; i < params.length; i++) {
+                if (params[i].value > 0) {
+                  str += params[i].seriesName + params[i].value + '（%）<br/>'
+                }
+              }
+              return str
+            },
+          }
           break
         default:
           break
