@@ -53,11 +53,11 @@
         <div class="right-bot">
           <div
             :class="
-              projectIndex === 'fertilizerre'
+              projectIndex === 'fertilizepro'
                 ? 'sub-btn1 sub-btn-act'
                 : 'sub-btn1'
             "
-            @click="setProject('fertilizerre')"
+            @click="setProject('fertilizepro')"
           >
             化肥减施工程
           </div>
@@ -129,11 +129,16 @@ export default {
     },
     setProject(index) {
       this.projectIndex = index
-      this.$router.push(`/pollutionpre/${index}`)
+      this.$router.push({
+        name: index,
+      })
     },
   },
   mounted() {
     this.projectIndex = this.$route.name
+    if (this.$route.path.includes('fertilizerre')) {
+      this.projectIndex = 'fertilizepro'
+    }
   },
 }
 </script>
